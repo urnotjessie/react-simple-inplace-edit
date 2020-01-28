@@ -2,26 +2,25 @@
   "name": "react-simple-inplace-edit",
   "version": "0.1.0",
   "private": true,
+  "main": "./dist/react-simple-inplace-edit.js",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
     "@types/jest": "^25.1.0",
-    "@types/node": "^13.5.0",
+    "@types/node": "^13.5.1",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "webpack-cli",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepublish": "rm -rf ./dist && npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,11 +37,21 @@
       "last 1 safari version"
     ]
   },
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
   "devDependencies": {
+    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "@storybook/addon-actions": "^5.3.9",
     "@storybook/addon-links": "^5.3.9",
     "@storybook/addons": "^5.3.9",
     "@storybook/preset-create-react-app": "^1.5.2",
-    "@storybook/react": "^5.3.9"
+    "@storybook/react": "^5.3.9",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   }
 }
