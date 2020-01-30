@@ -3,6 +3,9 @@ import './App.css';
 
 interface Props {
   originalValue: string;
+  errorMessage?: string;
+  onSubmit?: (param: string) => void;
+  validate?: (param: string) => boolean;
 }
 
 interface State {
@@ -29,12 +32,13 @@ export class App extends React.Component<Props, State> {
     this.setState({isEditing: true});
   };
 
-  isValidInput = (value) => {
+  isValidInput = (input: string) => {
+    if (this.props.validate) return this.props.validate(input)
     // eslint-disable-next-line no-useless-escape
-    return (value.match(/[a-zA-Z0-9\-_\<\>\$\!\,\.\'\s]+/) || [''])[0].length === value.length;
+    return (input.match(/[a-zA-Z0-9\-_\<\>\$\!\,\.\'\s]+/) || [''])[0].length === input.length;
   };
 
-  onFieldChange = (e) => {
+  onFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
     if (this.isValidInput(value)) {
@@ -50,23 +54,23 @@ export class App extends React.Component<Props, State> {
     }
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     if (this.state.updatedValue.length && this.state.isInputValid) {
       this.setState({isEditing: false});
-      // this.props.editCollectionName(this.state.collectionName);
+      this.props.onSubmit && this.props.onSubmit(this.state.updatedValue);
     } else {
       e.preventDefault();
     }
   };
 
-  handleKeyDown = (e) => {
+  handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
     if (e.keyCode === 27 /* ESC key */) {
       this.onCancel();
     }
   };
 
   render() {
-    const {originalValue} = this.props;
+    const {originalValue, errorMessage} = this.props;
 
     return (
       <div className="uc-workspaceCollectionHeader-editingWrapper">
@@ -74,7 +78,7 @@ export class App extends React.Component<Props, State> {
           <h1
             onClick={this.onNameClick}
           >
-            {originalValue}
+            {this.state.isInputValid ? this.state.updatedValue : originalValue}
           </h1>
         )}
         {this.state.isEditing && (
@@ -95,9 +99,9 @@ export class App extends React.Component<Props, State> {
             </form>
           </div>
         )}
-        {this.state.isEditing && !this.state.isInputValid && (
+        {this.state.isEditing && !this.state.isInputValid && errorMessage && (
           <p>
-            {`Error message`}
+            {errorMessage}
           </p>
         )}
       </div>
