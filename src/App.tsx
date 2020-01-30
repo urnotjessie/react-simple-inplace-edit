@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import './App.css';
 
@@ -6,6 +7,10 @@ interface Props {
   errorMessage?: string;
   onSubmit?: (param: string) => void;
   validate?: (param: string) => boolean;
+  titleClassName?: string;
+  formClassName?: string;
+  inputClassName?: string;
+  errorMessageClassName?: string;
 }
 
 interface State {
@@ -20,6 +25,9 @@ export class App extends React.Component<Props, State> {
     isEditing: false,
     updatedValue: this.props.originalValue,
   };
+
+  titleClasses = classNames(this.props.titleClassName, 'titleEditing');
+  inputClasses = classNames(this.props.inputClassName, 'titleInput');
 
   onCancel = () => {
     this.setState({isEditing: false});
@@ -70,37 +78,36 @@ export class App extends React.Component<Props, State> {
   };
 
   render() {
-    const {originalValue, errorMessage} = this.props;
+    const {originalValue, errorMessage, formClassName, errorMessageClassName} = this.props;
 
     return (
-      <div className="uc-workspaceCollectionHeader-editingWrapper">
+      <div>
         {!this.state.isEditing && (
           <h1
+            className={this.titleClasses}
             onClick={this.onNameClick}
           >
             {this.state.isInputValid ? this.state.updatedValue : originalValue}
           </h1>
         )}
         {this.state.isEditing && (
-          <div>
-            <form
-              onSubmit={this.handleSubmit}
-              onKeyDown={this.handleKeyDown}
-              onBlur={this.onCancel}
-            >
-              <input
-                className="font-sansRegular uc-workspaceCollectionHeader-titleInput"
-                data-tn="workspaceBoardHeader-input-title"
-                type="text"
-                autoFocus={true}
-                value={this.state.updatedValue}
-                onChange={this.onFieldChange}
-              />
-            </form>
-          </div>
+          <form
+            className={formClassName}
+            onSubmit={this.handleSubmit}
+            onKeyDown={this.handleKeyDown}
+            onBlur={this.onCancel}
+          >
+            <input
+              className={this.inputClasses}
+              type="text"
+              autoFocus={true}
+              value={this.state.updatedValue}
+              onChange={this.onFieldChange}
+            />
+          </form>
         )}
         {this.state.isEditing && !this.state.isInputValid && errorMessage && (
-          <p>
+          <p className={errorMessageClassName}>
             {errorMessage}
           </p>
         )}
