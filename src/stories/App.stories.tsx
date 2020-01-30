@@ -2,15 +2,14 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import {App} from '../App';
 
-const onSubmit = (input: string): void => {
-  console.log('update');
-  window.alert(input);
+const onSubmit = (): void => {
+  window.alert('title updated!');
 }
 
 storiesOf("App", module)
-  .add("with text", () => (
+  .add("In-place edit", () => (
     <App
-      originalValue={'Name'}
+      originalValue={'In-place edit title'}
       onSubmit={onSubmit}
       errorMessage={`Title can only contain these special characters: $ ! < > - _ ' , .`}
     />

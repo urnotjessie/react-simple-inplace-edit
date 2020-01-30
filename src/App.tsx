@@ -5,7 +5,7 @@ import './App.css';
 interface Props {
   originalValue: string;
   errorMessage?: string;
-  onSubmit?: (param: string) => void;
+  onSubmit?: (param?: string) => void;
   validate?: (param: string) => boolean;
   titleClassName?: string;
   formClassName?: string;
