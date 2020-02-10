@@ -18,7 +18,12 @@ interface State {
   isEditing: boolean;
   updatedValue: string;
 }
-
+/**
+ * A react component that enables in-place editing for text.
+ * 
+ * The `<InplaceEdit />` component consists of an `<h1>` element that display the text
+ * and an `<input>` element that allows users to edit the text
+ */
 export class App extends React.Component<Props, State> {
   state: State = {
     isInputValid: true,
@@ -114,4 +119,15 @@ export class App extends React.Component<Props, State> {
       </div>
     );
   }
+}
+
+App.defaultProps = {
+  originalValue: null,
+  errorMessage: null,
+  onSubmit: null,
+  validate: null,
+  titleClassName: null,
+  formClassName: null,
+  inputClassName: null,
+  errorMessageClassName: null,
 }
