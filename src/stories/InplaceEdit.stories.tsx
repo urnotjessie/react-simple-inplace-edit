@@ -1,6 +1,6 @@
 import {Preview, Props, Title} from '@storybook/addon-docs/blocks';
 import * as React from 'react';
-import {App} from '../App';
+import {InplaceEdit} from '../InplaceEdit';
 
 const onSubmit = (): void => {
   window.alert('title updated!');
@@ -8,11 +8,11 @@ const onSubmit = (): void => {
 
 export default {
   title: 'In-place edit component',
-  component: App,
+  component: InplaceEdit,
 };
 
 export const story = () => (
-  <App
+  <InplaceEdit
     originalValue={'Click to edit'}
     onSubmit={onSubmit}
     errorMessage={`Title can only contain these special characters: $ ! < > - _ ' , .`}

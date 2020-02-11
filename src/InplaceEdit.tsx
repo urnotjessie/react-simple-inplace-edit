@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import './App.css';
+import './InplaceEdit.css';
 
 interface Props {
   originalValue: string;
@@ -24,7 +24,7 @@ interface State {
  * The `<InplaceEdit />` component consists of an `<h1>` element that display the text
  * and an `<input>` element that allows users to edit the text
  */
-export class App extends React.Component<Props, State> {
+export class InplaceEdit extends React.Component<Props, State> {
   state: State = {
     isInputValid: true,
     isEditing: false,
@@ -121,7 +121,7 @@ export class App extends React.Component<Props, State> {
   }
 }
 
-App.defaultProps = {
+InplaceEdit.defaultProps = {
   originalValue: null,
   errorMessage: null,
   onSubmit: null,

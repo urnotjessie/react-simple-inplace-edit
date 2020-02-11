@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App} from './App';
+import {InplaceEdit} from './InplaceEdit';
 
-ReactDOM.render(<App originalValue={'app'}/>, document.getElementById('root'));
+ReactDOM.render(<InplaceEdit originalValue={'app'}/>, document.getElementById('root'));
 
