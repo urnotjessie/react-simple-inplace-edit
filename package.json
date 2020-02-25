@@ -3,32 +3,29 @@
   "version": "0.1.0",
   "description": "A react component that enables in-place editing for text",
   "main": "./dist/react-simple-inplace-edit.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "webpack-cli",
+    "build-types": "tsc --emitDeclarationOnly",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepublishOnly": "npm run build && npm run build-types"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/urnotjessie/react-simple-inplace-edit.git"
   },
+  "keywords": [
+    "react",
+    "typescript",
+    "react-component",
+    "inline"
+  ],
   "author": "Jessie Gong",
   "license": "MIT",
   "homepage": "https://github.com/urnotjessie/react-simple-inplace-edit",
   "eslintConfig": {
     "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "dependencies": {
     "classnames": "^2.2.6"

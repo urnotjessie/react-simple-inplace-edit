@@ -25,6 +25,16 @@ interface State {
  * and an `<input>` element that allows users to edit the text
  */
 export class InplaceEdit extends React.Component<Props, State> {
+  static defaultProps = {
+    originalValue: null,
+    errorMessage: null,
+    onSubmit: null,
+    validate: null,
+    titleClassName: null,
+    formClassName: null,
+    inputClassName: null,
+    errorMessageClassName: null,
+  };
   state: State = {
     isInputValid: true,
     isEditing: false,
@@ -121,13 +131,13 @@ export class InplaceEdit extends React.Component<Props, State> {
   }
 }
 
-InplaceEdit.defaultProps = {
-  originalValue: null,
-  errorMessage: null,
-  onSubmit: null,
-  validate: null,
-  titleClassName: null,
-  formClassName: null,
-  inputClassName: null,
-  errorMessageClassName: null,
-}
+// InplaceEdit.defaultProps = {
+//   originalValue: null,
+//   errorMessage: null,
+//   onSubmit: null,
+//   validate: null,
+//   titleClassName: null,
+//   formClassName: null,
+//   inputClassName: null,
+//   errorMessageClassName: null,
+// }

@@ -1,4 +1,6 @@
-webpack.local.config.js
-    webpack.production.config.js
-    .eslintrc
-    .gitignore
+webpack.config.js
+tsconfig.json
+.eslintrc
+.gitignore
+.storybook
+src
