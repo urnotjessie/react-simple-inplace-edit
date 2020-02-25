@@ -1,4 +1,3 @@
-import {Preview, Props, Title} from '@storybook/addon-docs/blocks';
 import * as React from 'react';
 import {InplaceEdit} from '../InplaceEdit';
 
