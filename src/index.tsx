@@ -1,1 +1,3 @@
-export {InplaceEdit} from './InplaceEdit';
+import InplaceEdit from './InplaceEdit';
+
+export default InplaceEdit;

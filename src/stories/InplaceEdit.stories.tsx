@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {InplaceEdit} from '../InplaceEdit';
+import InplaceEdit from '../InplaceEdit';
 
 const onSubmit = (): void => {
   window.alert('title updated!');

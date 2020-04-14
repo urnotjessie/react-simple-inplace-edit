@@ -24,7 +24,7 @@ interface State {
  * The `<InplaceEdit />` component consists of an `<h1>` element that display the text
  * and an `<input>` element that allows users to edit the text
  */
-export class InplaceEdit extends React.Component<Props, State> {
+export default class InplaceEdit extends React.Component<Props, State> {
   static defaultProps = {
     originalValue: null,
     errorMessage: null,
@@ -130,14 +130,3 @@ export class InplaceEdit extends React.Component<Props, State> {
     );
   }
 }
-
-// InplaceEdit.defaultProps = {
-//   originalValue: null,
-//   errorMessage: null,
-//   onSubmit: null,
-//   validate: null,
-//   titleClassName: null,
-//   formClassName: null,
-//   inputClassName: null,
-//   errorMessageClassName: null,
-// }
